@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 const { User } = require('../database/models');
 const { token } = require('../Middleware');
 
@@ -20,11 +19,7 @@ const login = async (loginObject) => {
     raw: true,
   });
 
-  // console.log('Respostas do Sequelize', resultModel);
-
-  if (!resultModel) {
-    return undefined;
-  }
+  if (!resultModel) return undefined;
 
   if (resultModel.password !== loginObject.password) {
     return undefined;
