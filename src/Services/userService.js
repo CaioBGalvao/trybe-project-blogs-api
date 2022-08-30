@@ -27,12 +27,23 @@ const createUser = async (userObject) => {
 };
 
 const getAllUsers = async () => {
-  const result = await User.findAll();
+  const result = await User.findAll({
+    // logging: console.log,
+    attributes: {
+      exclude: ['password'],
+    },
+  });
   return result;
 };
 
 const getUserByPk = async (id) => {
-  const result = await User.findByPk(id);
+  const result = await User.findByPk(id, {
+    // logging: console.log,
+    attributes: {
+      exclude: ['password'],
+    },
+  });
+  // Luis estava certo, o findByPk realmente não aceita where:
   return result;
 };
 

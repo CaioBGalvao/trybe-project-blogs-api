@@ -21,11 +21,9 @@ const validateToken = (req, res, next) => {
     if (err.message === 'jwt must be provided') {
       return res.status(401).json({ message: 'Token not found' });
     }
-    if (err.message === 'jwt expired') {
+    if (err.message) {
       return res.status(401).json({ message: 'Expired or invalid token' });
     }
-    console.error('Erro do JWT:', err);
-    return res.status(401).json({ message: 'Erro na autorização.' });
   }
   next();
 };
