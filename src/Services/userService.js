@@ -9,7 +9,7 @@ const createUser = async (userObject) => {
   const { displayName, email, password, image } = userObject;
 
   const resultModel = await User.findOrCreate({
-    logging: console.log,
+    // logging: console.log,
     where: { email },
     defaults: {
       displayName,

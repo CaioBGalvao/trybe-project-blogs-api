@@ -16,7 +16,8 @@ const createToken = (payload) => {
 const validateToken = (req, res, next) => {
   const { authorization } = req.headers;
   try {
-    jwt.verify(authorization, JWT_SECRET);
+    const result = jwt.verify(authorization, JWT_SECRET);
+    req.email = result.email;
   } catch (err) {
     if (err.message === 'jwt must be provided') {
       return res.status(401).json({ message: 'Token not found' });

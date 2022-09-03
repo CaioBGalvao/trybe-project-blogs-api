@@ -14,6 +14,7 @@ const userSchema = Joi.object({
 
 const validateUser = (userObject) => {
   const { error } = userSchema.validate(userObject);
+  console.error(error);
 
   if (error) {
     const [message, code] = error.message.split('&');
