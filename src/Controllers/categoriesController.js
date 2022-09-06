@@ -4,8 +4,9 @@ const createCategory = async (req, res) => {
   const { name } = req.body;
   const categoryObject = { name };
   const category = await categoriesService.createCategory(categoryObject);
+
   if (category.code) {
-    return res.status(Number(category.code)).json(category.message);
+    return res.status(Number(category.code)).json({ message: category.message });
   }
   return res.status(201).json(category);
 };
